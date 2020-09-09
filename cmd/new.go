@@ -25,7 +25,7 @@ var newCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// Class has already been created
 		if viper.IsSet(fmt.Sprintf("classes.%s", args[0])) {
-			return errors.New("Specified class already exists, use 'edit'")
+			return errors.New("Class already exists, use 'edit'")
 		}
 
 		// Create the class and add it to 'classes'
