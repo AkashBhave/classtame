@@ -40,11 +40,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.classtame.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "help message for toggle")
+	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file (default is $HOME/.classtame.yaml)")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -59,10 +55,12 @@ func initConfig() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-
 		// Search config in home directory with name ".classtame" (without extension).
 		viper.AddConfigPath(home)
 		viper.SetConfigName(".classtame")
+		viper.SetConfigType("yaml")
+		// Save the empty config if it doesn't exist
+		viper.SafeWriteConfig()
 	}
 
 	viper.AutomaticEnv() // Read in environment variables that match
