@@ -13,7 +13,8 @@ import (
 // infoCmd represents the info command
 var infoCmd = &cobra.Command{
 	Use:   "info",
-	Short: "Return information about a class", Args: cobra.ExactArgs(1),
+	Short: "Return information about a class",
+	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// Class doesn't exist
 		if !viper.IsSet(fmt.Sprintf("classes.%s", args[0])) {
