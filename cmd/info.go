@@ -27,9 +27,8 @@ var infoCmd = &cobra.Command{
 		if class.Name != "" {
 			fmt.Printf("Name: %s\n", class.Name)
 		}
-		fmt.Printf("Alias: %s\n", args[0])
-		if class.Period != 0 {
-			fmt.Printf("Period: %d\n", class.Period)
+		if class.Period != "" {
+			fmt.Printf("Period: %s\n", class.Period)
 		}
 		if class.Link != "" {
 			fmt.Printf("Link: %s\n", class.Link)

@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	period  int
+	period  string
 	link    string
 	name    string
 	teacher string
@@ -47,7 +47,7 @@ func init() {
 	rootCmd.AddCommand(newCmd)
 
 	// Required flags
-	newCmd.Flags().IntVarP(&period, "period", "p", 0, "period of the class")
+	newCmd.Flags().StringVarP(&period, "period", "p", "", "period of the class")
 	newCmd.MarkFlagRequired("period")
 	newCmd.Flags().StringVarP(&link, "link", "l", "", "link to the virtual classroom")
 	newCmd.MarkFlagRequired("link")
